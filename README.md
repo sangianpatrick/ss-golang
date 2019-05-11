@@ -1,0 +1,1 @@
+# ss-golang-ooplike-parallelisme-concurrency
