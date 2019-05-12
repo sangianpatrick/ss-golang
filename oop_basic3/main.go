@@ -94,6 +94,6 @@ func printAllEmployee(d employee.Domain) {
 	} else {
 		employeesByte, _ := json.Marshal(employees)
 		employeesJSON := string(employeesByte)
-		fmt.Printf("Print Employee By ID: \n%v\n", employeesJSON)
+		fmt.Printf("Print Employee List: \n%v\n", employeesJSON)
 	}
 }
