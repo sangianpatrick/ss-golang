@@ -32,6 +32,7 @@ func main() {
 
 	//--------------------------------------------------------------------------
 	// Go to employee handler function (CRUD)
+	// List of function is written in handler.go
 	//--------------------------------------------------------------------------
 
 	// createEmployee(eD)
