@@ -1,3 +1,7 @@
+/**
+ * Go OOP-like CRUD Basic with MongoDB
+ * Implement module type development
+ */
 package main
 
 import (
