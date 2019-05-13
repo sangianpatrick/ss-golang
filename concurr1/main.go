@@ -47,6 +47,7 @@ func multiply(ch1 chan int, ch2 chan int, x int, y int) {
 	time.Sleep(1 * time.Second)
 	fmt.Println("Multiply: Waiting for result of addition")
 	result *= <-ch1
+	time.Sleep(1 * time.Second)
 	fmt.Println("Multiply: Done")
 	ch2 <- result
 }
@@ -57,6 +58,7 @@ func division(ch2 chan int, ch3 chan float64, x int, y int) {
 	time.Sleep(1 * time.Second)
 	fmt.Println("Division: Waiting for result of multiply")
 	result /= float64(<-ch2)
+	time.Sleep(1 * time.Second)
 	fmt.Println("Division: Done")
 	ch3 <- result
 }

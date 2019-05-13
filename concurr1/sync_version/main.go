@@ -29,6 +29,7 @@ func multiply(process1 int, x int, y int) int {
 	result := x * y
 	time.Sleep(1 * time.Second)
 	result *= process1
+	time.Sleep(1 * time.Second)
 	fmt.Println("Multiply: Done")
 	return result
 }
@@ -38,6 +39,7 @@ func division(process2 int, x int, y int) float64 {
 	result := float64(x / y)
 	time.Sleep(1 * time.Second)
 	result /= float64(process2)
+	time.Sleep(1 * time.Second)
 	fmt.Println("Division: Done")
 	return result
 }
