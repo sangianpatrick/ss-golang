@@ -9,23 +9,23 @@ import (
 
 // EmployeeMongoRepository contains employee's entity with mongodb
 type EmployeeMongoRepository struct {
-	db *mgo.Session
+	sess *mgo.Session
 }
 
 // NewEmployeeMongoRepository acts like constructor
-func NewEmployeeMongoRepository(mgo *mgo.Session) (employee.MongoRepository, error) {
-	err := mgo.Ping()
+func NewEmployeeMongoRepository(mgoSess *mgo.Session) (employee.MongoRepository, error) {
+	err := mgoSess.Ping()
 	if err != nil {
 		return nil, err
 	}
 	return &EmployeeMongoRepository{
-		db: mgo,
+		sess: mgoSess,
 	}, nil
 }
 
 // InsertOne will add a new employee.
 func (mr *EmployeeMongoRepository) InsertOne(employee model.Employee) error {
-	return mr.db.DB("gotest").C("employee").Insert(employee)
+	return mr.sess.DB("gotest").C("employee").Insert(employee)
 }
 
 // FindByID returns employee property
@@ -34,7 +34,7 @@ func (mr *EmployeeMongoRepository) FindByID(id string) (*model.Employee, error) 
 	var query = bson.M{
 		"employeeID": id,
 	}
-	err := mr.db.DB("gotest").C("employee").Find(query).One(&employee)
+	err := mr.sess.DB("gotest").C("employee").Find(query).One(&employee)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func (mr *EmployeeMongoRepository) FindByEmail(email string) (*model.Employee, e
 	var query = bson.M{
 		"email": email,
 	}
-	err := mr.db.DB("gotest").C("employee").Find(query).One(&employee)
+	err := mr.sess.DB("gotest").C("employee").Find(query).One(&employee)
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +58,7 @@ func (mr *EmployeeMongoRepository) FindByEmail(email string) (*model.Employee, e
 func (mr *EmployeeMongoRepository) FindAll() (*model.Employees, error) {
 	var employees model.Employees
 	var query = bson.M{}
-	err := mr.db.DB("gotest").C("employee").Find(query).All(&employees)
+	err := mr.sess.DB("gotest").C("employee").Find(query).All(&employees)
 	if err != nil {
 		return nil, err
 	}
