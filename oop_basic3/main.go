@@ -17,13 +17,16 @@ import (
 
 func main() {
 	// pool connection to mongodb
-	mgoSession, err := mgo.DialWithInfo(&mgo.DialInfo{
-		Addrs:     []string{"localhost:27017"},
-		Username:  "patrick",
-		Password:  "14qwafzx",
-		Database:  "gotest",
-		PoolLimit: 5,
-	})
+	// mgoSession, err := mgo.DialWithInfo(&mgo.DialInfo{
+	// 	Addrs:     []string{"localhost:27017"},
+	// 	Username:  "patrick",
+	// 	Password:  "14qwafzx",
+	// 	Database:  "gotest",
+	// 	PoolLimit: 5,
+	// })
+
+	// pool connection to mongodb with mongo url
+	mgoSession, err := mgo.Dial("mongodb://patrick:14qwafzx@localhost:27017/gotest")
 
 	if err != nil {
 		panic(err)
